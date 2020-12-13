@@ -1,0 +1,3 @@
+C:\Новая папка\Factorial\Factorial\x64\Debug\Factorial.vcxprojAssemblyReference.cache
+C:\Новая папка\Factorial\Factorial\x64\Debug\Factorial.MyForm.resources
+C:\Новая папка\Factorial\Factorial\x64\Debug\Factorial.vcxproj.GenerateResource.cache

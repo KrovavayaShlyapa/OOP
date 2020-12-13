@@ -6,7 +6,6 @@ class Radio {
 public:
 	int Requests;
 	int FailedRequests;
-	bool PlaySong(Song a);
 };
 class Song {
 public:
