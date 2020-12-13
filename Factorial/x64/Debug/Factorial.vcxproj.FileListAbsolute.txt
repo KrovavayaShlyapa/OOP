@@ -1,0 +1,3 @@
+H:\Учеба\Проекты\Проект для Славика\OOP\Factorial\x64\Debug\Factorial.vcxprojAssemblyReference.cache
+H:\Учеба\Проекты\Проект для Славика\OOP\Factorial\x64\Debug\Factorial.MyForm.resources
+H:\Учеба\Проекты\Проект для Славика\OOP\Factorial\x64\Debug\Factorial.vcxproj.GenerateResource.cache

@@ -1,15 +1,12 @@
-#include"fact.h"
 #include "MyForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
-[STAThreadAttribute]
-void Main(array<String^> ^ args) {
+[STAThread]
+void Main(cli::array<String^>^ args) {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    Factorial::MyForm form;
+
+    Factorial::MyForm form; //WinFormsTest - имя вашего проекта
     Application::Run(% form);
-    
 }
-
-
