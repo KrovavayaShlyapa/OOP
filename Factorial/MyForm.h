@@ -60,6 +60,7 @@ namespace Factorial {
 
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ Start;
+	private: System::Windows::Forms::Button^ Step;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -89,6 +90,7 @@ namespace Factorial {
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->HitParade = (gcnew System::Windows::Forms::DataGridView());
 			this->Requests = (gcnew System::Windows::Forms::DataGridView());
+			this->Step = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->errorProvider1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Catalog))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HitParade))->BeginInit();
@@ -155,7 +157,7 @@ namespace Factorial {
 			// 
 			// Start
 			// 
-			this->Start->Location = System::Drawing::Point(12, 202);
+			this->Start->Location = System::Drawing::Point(12, 198);
 			this->Start->Name = L"Start";
 			this->Start->Size = System::Drawing::Size(225, 44);
 			this->Start->TabIndex = 6;
@@ -182,16 +184,26 @@ namespace Factorial {
 			// Requests
 			// 
 			this->Requests->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->Requests->Location = System::Drawing::Point(473, 21);
+			this->Requests->Location = System::Drawing::Point(436, 21);
 			this->Requests->Name = L"Requests";
 			this->Requests->Size = System::Drawing::Size(237, 162);
 			this->Requests->TabIndex = 9;
+			// 
+			// Step
+			// 
+			this->Step->Location = System::Drawing::Point(436, 189);
+			this->Step->Name = L"Step";
+			this->Step->Size = System::Drawing::Size(75, 23);
+			this->Step->TabIndex = 10;
+			this->Step->Text = L"Step";
+			this->Step->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(955, 637);
+			this->ClientSize = System::Drawing::Size(727, 637);
+			this->Controls->Add(this->Step);
 			this->Controls->Add(this->Requests);
 			this->Controls->Add(this->HitParade);
 			this->Controls->Add(this->button7);
@@ -205,7 +217,8 @@ namespace Factorial {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
-			this->Text = L"Factorial";
+			this->Text = L"Radio";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->errorProvider1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Catalog))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HitParade))->EndInit();
@@ -218,9 +231,7 @@ namespace Factorial {
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	   void ClearAll() {//очистка полей
-		   this->txtOutput->Text = "";
-		   errorProvider1->SetError(txtInput, String::Empty);
-	   }
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

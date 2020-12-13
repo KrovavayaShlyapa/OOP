@@ -6,6 +6,7 @@ class Radio {
 public:
 	int Requests;
 	int FailedRequests;
+	bool PlaySong(Song a);
 };
 class Song {
 public:
@@ -18,7 +19,7 @@ public:
 	int Rating;
 	Song(string a, string b, string c,string g, int y, int d) {
 		Author = a;
-		Album = b;
+		Album = b;// Если альбома нет - None 
 		Name = c;
 		Year = y;
 		Genre = g;
