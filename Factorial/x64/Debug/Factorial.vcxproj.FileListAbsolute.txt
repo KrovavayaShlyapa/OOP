@@ -1,3 +1,6 @@
 C:\Новая папка\Factorial\Factorial\x64\Debug\Factorial.vcxprojAssemblyReference.cache
 C:\Новая папка\Factorial\Factorial\x64\Debug\Factorial.MyForm.resources
 C:\Новая папка\Factorial\Factorial\x64\Debug\Factorial.vcxproj.GenerateResource.cache
+C:\Users\User\Desktop\Git repos\OOP\Factorial\x64\Debug\Factorial.vcxprojAssemblyReference.cache
+C:\Users\User\Desktop\Git repos\OOP\Factorial\x64\Debug\Factorial.MyForm.resources
+C:\Users\User\Desktop\Git repos\OOP\Factorial\x64\Debug\Factorial.vcxproj.GenerateResource.cache

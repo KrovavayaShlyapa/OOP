@@ -1,4 +1,4 @@
 ﻿  MyForm.cpp
-C:\Новая папка\Factorial\Factorial\Classes.h(33,17): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
-  Factorial.vcxproj -> C:\Новая папка\Factorial\x64\Debug\Factorial.exe
+C:\Users\User\Desktop\Git repos\OOP\Factorial\Classes.h(41,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  Factorial.vcxproj -> C:\Users\User\Desktop\Git repos\OOP\x64\Debug\Factorial.exe

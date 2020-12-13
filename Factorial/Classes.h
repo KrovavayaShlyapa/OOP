@@ -1,12 +1,16 @@
 #pragma once
 #include <iostream>
-#include<string>
+#include <string>
+#include <fstream>
+
 using namespace std;
+
 class Radio {
 public:
 	int Requests;
 	int FailedRequests;
 };
+
 class Song {
 public:
 	string Author;
@@ -16,6 +20,9 @@ public:
 	int Year;
 	int Duration;
 	int Rating;
+
+	Song() = default;
+
 	Song(string a, string b, string c,string g, int y, int d) {
 		Author = a;
 		Album = b;// Если альбома нет - None 
@@ -25,6 +32,7 @@ public:
 		Duration = d;
 		Rating = 0;
 	};
+
 	bool ChangeRating()
 	{
 		double tmpV = Rating +0.05;
@@ -33,7 +41,8 @@ public:
 		else Rating = tmpV;
 		return result;
 	}
+
+	bool operator==(Song& y) {
+		return this->Author == y.Author;
+	}
 };
-bool operator==(Song& x, Song& y) {
-	return x.Author == y.Author;
-}

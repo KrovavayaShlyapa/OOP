@@ -34,20 +34,8 @@ namespace Factorial {
 				delete components;
 			}
 		}
-
-
 	protected:
-
 	protected:
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::ErrorProvider^ errorProvider1;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button4;
@@ -99,55 +87,7 @@ namespace Factorial {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private: System::ComponentModel::IContainer^ components;
-
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -551,6 +491,20 @@ namespace Factorial {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			// Инициализация таблицы начальными значениями из файла
+			System::IO::StreamReader^ inFile = gcnew System::IO::StreamReader("input.txt");
+			String^ line;
+			int rowIndex = 0;
+			while ((line = inFile->ReadLine()) != nullptr)
+			{
+				cli::array<String^>^ temp = line->Split(' ');
+				this->Catalog->Rows->Add();
+				for (int i = 0; i < temp->Length; ++i)
+				{
+					this->Catalog->Rows[rowIndex]->Cells[i]->Value = temp[i];
+				}
+				++rowIndex;
+			}
 		}
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
