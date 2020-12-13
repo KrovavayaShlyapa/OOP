@@ -17,15 +17,17 @@ public:
 	string Album;
 	string Name;
 	string Genre;
+	string Singers;
 	int Year;
 	int Duration;
 	int Rating;
 
 	Song() = default;
 
-	Song(string a, string b, string c,string g, int y, int d) {
+	Song(string	g, string c, string a,string s,string b, int y, int d) {
 		Author = a;
 		Album = b;// Если альбома нет - None 
+		Singers = s;
 		Name = c;
 		Year = y;
 		Genre = g;

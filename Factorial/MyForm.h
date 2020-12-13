@@ -164,6 +164,7 @@ namespace Factorial {
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Rock";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -173,6 +174,7 @@ namespace Factorial {
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Hip-hop";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// button3
 			// 
@@ -182,6 +184,7 @@ namespace Factorial {
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"Rap";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// button4
 			// 
@@ -191,6 +194,7 @@ namespace Factorial {
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Metal";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// button5
 			// 
@@ -201,6 +205,7 @@ namespace Factorial {
 			this->button5->TabIndex = 5;
 			this->button5->Text = L"Classic";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
 			// Start
 			// 
@@ -220,6 +225,7 @@ namespace Factorial {
 			this->button7->TabIndex = 7;
 			this->button7->Text = L"Bass";
 			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
 			// 
 			// ButtonStep
 			// 
@@ -270,44 +276,53 @@ namespace Factorial {
 			// 
 			this->dataGridViewTextBoxColumn8->HeaderText = L"Рейтинг";
 			this->dataGridViewTextBoxColumn8->Name = L"dataGridViewTextBoxColumn8";
+			this->dataGridViewTextBoxColumn8->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn7
 			// 
 			this->dataGridViewTextBoxColumn7->HeaderText = L"Длительность";
 			this->dataGridViewTextBoxColumn7->Name = L"dataGridViewTextBoxColumn7";
+			this->dataGridViewTextBoxColumn7->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn6
 			// 
 			this->dataGridViewTextBoxColumn6->HeaderText = L"Год";
 			this->dataGridViewTextBoxColumn6->Name = L"dataGridViewTextBoxColumn6";
+			this->dataGridViewTextBoxColumn6->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn5
 			// 
 			this->dataGridViewTextBoxColumn5->HeaderText = L"Альбом";
 			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
+			this->dataGridViewTextBoxColumn5->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn4
 			// 
 			this->dataGridViewTextBoxColumn4->HeaderText = L"Исполнители";
 			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
+			this->dataGridViewTextBoxColumn4->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn3
 			// 
 			this->dataGridViewTextBoxColumn3->HeaderText = L"Автор";
 			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			this->dataGridViewTextBoxColumn3->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
 			this->dataGridViewTextBoxColumn2->HeaderText = L"Название";
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			this->dataGridViewTextBoxColumn2->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
 			this->dataGridViewTextBoxColumn1->HeaderText = L"Жанр";
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			this->dataGridViewTextBoxColumn1->ReadOnly = true;
 			// 
 			// Requests
 			// 
+			this->Requests->AllowUserToAddRows = false;
 			this->Requests->AllowUserToResizeColumns = false;
 			this->Requests->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->Requests->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -318,6 +333,7 @@ namespace Factorial {
 			});
 			this->Requests->Location = System::Drawing::Point(12, 227);
 			this->Requests->Name = L"Requests";
+			this->Requests->ReadOnly = true;
 			this->Requests->Size = System::Drawing::Size(684, 162);
 			this->Requests->TabIndex = 8;
 			// 
@@ -363,6 +379,7 @@ namespace Factorial {
 			// 
 			// HitParade
 			// 
+			this->HitParade->AllowUserToAddRows = false;
 			this->HitParade->AllowUserToResizeColumns = false;
 			this->HitParade->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->HitParade->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -378,6 +395,7 @@ namespace Factorial {
 			// 
 			// Catalog
 			// 
+			this->Catalog->AllowUserToAddRows = false;
 			this->Catalog->AllowUserToResizeColumns = false;
 			this->Catalog->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->Catalog->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -388,6 +406,7 @@ namespace Factorial {
 			});
 			this->Catalog->Location = System::Drawing::Point(12, 36);
 			this->Catalog->Name = L"Catalog";
+			this->Catalog->ReadOnly = true;
 			this->Catalog->Size = System::Drawing::Size(684, 162);
 			this->Catalog->TabIndex = 15;
 			// 
@@ -395,41 +414,49 @@ namespace Factorial {
 			// 
 			this->dataGridViewTextBoxColumn17->HeaderText = L"Жанр";
 			this->dataGridViewTextBoxColumn17->Name = L"dataGridViewTextBoxColumn17";
+			this->dataGridViewTextBoxColumn17->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn18
 			// 
 			this->dataGridViewTextBoxColumn18->HeaderText = L"Название";
 			this->dataGridViewTextBoxColumn18->Name = L"dataGridViewTextBoxColumn18";
+			this->dataGridViewTextBoxColumn18->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn19
 			// 
 			this->dataGridViewTextBoxColumn19->HeaderText = L"Автор";
 			this->dataGridViewTextBoxColumn19->Name = L"dataGridViewTextBoxColumn19";
+			this->dataGridViewTextBoxColumn19->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn20
 			// 
 			this->dataGridViewTextBoxColumn20->HeaderText = L"Исполнители";
 			this->dataGridViewTextBoxColumn20->Name = L"dataGridViewTextBoxColumn20";
+			this->dataGridViewTextBoxColumn20->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn21
 			// 
 			this->dataGridViewTextBoxColumn21->HeaderText = L"Альбом";
 			this->dataGridViewTextBoxColumn21->Name = L"dataGridViewTextBoxColumn21";
+			this->dataGridViewTextBoxColumn21->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn22
 			// 
 			this->dataGridViewTextBoxColumn22->HeaderText = L"Год";
 			this->dataGridViewTextBoxColumn22->Name = L"dataGridViewTextBoxColumn22";
+			this->dataGridViewTextBoxColumn22->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn23
 			// 
 			this->dataGridViewTextBoxColumn23->HeaderText = L"Длительность";
 			this->dataGridViewTextBoxColumn23->Name = L"dataGridViewTextBoxColumn23";
+			this->dataGridViewTextBoxColumn23->ReadOnly = true;
 			// 
 			// dataGridViewTextBoxColumn24
 			// 
 			this->dataGridViewTextBoxColumn24->HeaderText = L"Рейтинг";
 			this->dataGridViewTextBoxColumn24->Name = L"dataGridViewTextBoxColumn24";
+			this->dataGridViewTextBoxColumn24->ReadOnly = true;
 			// 
 			// textBox1
 			// 
@@ -490,8 +517,8 @@ namespace Factorial {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Catalog))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
-			// Инициализация таблицы начальными значениями из файла
+			//Инициализация таблицы начальными значениями из файла
+			//Инициализация таблицы начальными значениями из файла
 			System::IO::StreamReader^ inFile = gcnew System::IO::StreamReader("input.txt");
 			String^ line;
 			int rowIndex = 0;
@@ -512,10 +539,136 @@ namespace Factorial {
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	 
-private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void Catalog_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {
+		for (int i = 0; i < Catalog->RowCount; i++)
+		{
+			System::String^ lineRating;//проверка рейтинга
+			lineRating = Catalog[7, i]->Value->ToString();
+			double rating;
+			bool z = Double::TryParse(lineRating, rating);
+			if (z && (rating < 0 || rating>1.00)) {
+				this->Catalog->Rows->Remove(this->Catalog->Rows[i]);
+				i--;
+			}
 
+		}
+	}
+private: System::Void Catalog_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->HitParade->RowCount = 0;
+		int cnt = 0;
+		for (int i = 0; i < Catalog->RowCount; i++)
+		{
+			System::String^ tempstr = Catalog[7, i]->Value->ToString();
+			System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+			double rate;
+			bool x = Double::TryParse(tempstr, rate);
+			if (rate >= 0.7 && tempstr2 == "Rock") {
+				this->HitParade->Rows->Add();
+				for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+					this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+				}
+				cnt++;
+			}
+
+		}
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->HitParade->RowCount = 0;
+	int cnt = 0;
+	for (int i = 0; i < Catalog->RowCount; i++)
+	{
+		System::String^ tempstr = Catalog[7, i]->Value->ToString();
+		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+		double rate;
+		bool x = Double::TryParse(tempstr, rate);
+		if (rate >= 0.7 && tempstr2 == "Hip-Hop") {
+			this->HitParade->Rows->Add();
+			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+			}
+			cnt++;
+		}
+
+	}
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->HitParade->RowCount = 0;
+	int cnt = 0;
+	for (int i = 0; i < Catalog->RowCount; i++)
+	{
+		System::String^ tempstr = Catalog[7, i]->Value->ToString();
+		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+		double rate;
+		bool x = Double::TryParse(tempstr, rate);
+		if (rate >= 0.7 && tempstr2 == "Classic") {
+			this->HitParade->Rows->Add();
+			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+			}
+			cnt++;
+		}
+
+	}
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->HitParade->RowCount = 0;
+	int cnt = 0;
+	for (int i = 0; i < Catalog->RowCount; i++)
+	{
+		System::String^ tempstr = Catalog[7, i]->Value->ToString();
+		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+		double rate;
+		bool x = Double::TryParse(tempstr, rate);
+		if (rate >= 0.7 && tempstr2 == "Metal") {
+			this->HitParade->Rows->Add();
+			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+			}
+			cnt++;
+		}
+
+	}
+}
+private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->HitParade->RowCount = 0;
+	int cnt = 0;
+	for (int i = 0; i < Catalog->RowCount; i++)
+	{
+		System::String^ tempstr = Catalog[7, i]->Value->ToString();
+		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+		double rate;
+		bool x = Double::TryParse(tempstr, rate);
+		if (rate >= 0.7 && tempstr2 == "Bass") {
+			this->HitParade->Rows->Add();
+			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+			}
+			cnt++;
+		}
+
+	}
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->HitParade->RowCount = 0;
+	int cnt = 0;
+	for (int i = 0; i < Catalog->RowCount; i++)
+	{
+		System::String^ tempstr = Catalog[7, i]->Value->ToString();
+		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+		double rate;
+		bool x = Double::TryParse(tempstr, rate);
+		if (rate >= 0.7 && tempstr2 == "Rap") {
+			this->HitParade->Rows->Add();
+			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+			}
+			cnt++;
+		}
+
+	}
 }
 };
 }
