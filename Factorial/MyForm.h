@@ -106,6 +106,7 @@ namespace Factorial {
 			this->Catalog->Name = L"Catalog";
 			this->Catalog->Size = System::Drawing::Size(237, 162);
 			this->Catalog->TabIndex = 0;
+			this->Catalog->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::Catalog_CellContentClick);
 			// 
 			// button1
 			// 
@@ -161,6 +162,7 @@ namespace Factorial {
 			this->Start->TabIndex = 6;
 			this->Start->Text = L"Start Working";
 			this->Start->UseVisualStyleBackColor = true;
+			this->Start->Click += gcnew System::EventHandler(this, &MyForm::Start_Click);
 			// 
 			// button7
 			// 
@@ -218,9 +220,11 @@ namespace Factorial {
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	   void ClearAll() {//очистка полей
-		   this->txtOutput->Text = "";
-		   errorProvider1->SetError(txtInput, String::Empty);
-	   }
+	 
+private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void Catalog_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+}
 };
 }
