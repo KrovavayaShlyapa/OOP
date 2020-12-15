@@ -637,6 +637,7 @@ namespace Factorial {
 	}
 
 	int N = 0, M = 0, K = 0, Lambda = 0;
+	cli::array<String^>^ Genres;
 	private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {
 		for (int i = 0; i < Catalog->RowCount; i++)
 		{
@@ -650,6 +651,7 @@ namespace Factorial {
 			}
 
 		}
+		//there we're filling array of String^ with Genres for modelling
 		bool z = Int32::TryParse(this->Days->Text, N);
 		if (z)
 		{
@@ -808,7 +810,47 @@ namespace Factorial {
 private: System::Void ButtonStep_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (N * 1440 > 0)
 	{
+		//there we're choosing genre we will be playing for hit-parade
+		//there we're filling hit-parade with chosen genre
+		this->HitParade->RowCount = 0;
+		if (this->Requests->RowCount < ((Lambda / 0.0417) * M)) {
+			for (double i = 0; i < ((Lambda / 0.0417) / 6.0); i++) {
+				int index = rand() % this->Catalog->RowCount;
+				this->Requests->Rows->Add();
+				for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+					this->Requests[j, this->Requests->RowCount - 1]->Value = this->Catalog[j, index - 1]->Value;
+				}
+			}
+			int cnt = 0;
+			for (int i = 0; i < Catalog->RowCount; i++)
+			{
+				System::String^ tempstr = Catalog[7, i]->Value->ToString();
+				System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+				double rate;
+				bool x = Double::TryParse(tempstr, rate);
+				// commented because there not realisation for choosing genre (I am very tired of this shit at this moment)
+					/*	if (rate >= 0.7 && tempstr2 == "Rap") {
+						this->HitParade->Rows->Add();
+						for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+							this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+						}
+						cnt++;
+					}*/
+					//
+			}
+			for (int i = 0; i < this->HitParade->RowCount; i++);
+			//There we're using method PlaySong + playing whole DataGridView "HitParade"
+			//there we will reduce time of modelling because we played RadioProgram
+		}
 
+		else {
+			//cycle for playing songs from request
+			for (int i = 0; i < this->Requests->RowCount; i++);
+
+			//there we will reduce time of modelling because we played RadioProgram
+		}
+		//there maybe we will do realization of New Ratings And Hit-Parades because of that
+		N -= 10;
 	}
 	else
 	{

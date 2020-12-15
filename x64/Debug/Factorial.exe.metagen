@@ -14,6 +14,21 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class Factorial.Song: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(System.String, System.String, System.String, System.String, System.String, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String Author : Public
+    System.String Album : Public
+    System.String Name : Public
+    System.String Genre : Public
+    System.String Singers : Public
+    Int32 Year : Public
+    Int32 Duration : Public
+    Int32 Rating : Public
+    Int32 Plays : Public
+  Methods:
+    PlaySong(Song): PrivateScope, Public, HideBySig
+    Reset(): PrivateScope, Public, HideBySig
 Class Factorial.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
