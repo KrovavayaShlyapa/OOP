@@ -5,46 +5,37 @@
 
 using namespace std;
 
-class Radio {
+ref class Radio {
 public:
-	int Requests;
-	int FailedRequests;
-};
-
-class Song {
-public:
-	string Author;
-	string Album;
-	string Name;
-	string Genre;
-	string Singers;
-	int Year;
-	int Duration;
-	int Rating;
-
-	Song() = default;
-
-	Song(string	g, string c, string a,string s,string b, int y, int d) {
-		Author = a;
-		Album = b;// Если альбома нет - None 
-		Singers = s;
-		Name = c;
-		Year = y;
-		Genre = g;
-		Duration = d;
-		Rating = 0;
-	};
-
-	bool ChangeRating()
-	{
-		double tmpV = Rating +0.05;
-		bool result = (tmpV >= 1); 
-		if (result) Rating = 1;
-		else Rating = tmpV;
-		return result;
+	int Requests=0;
+	int FailedRequests=0;
+	void AcceptRequest() {
+		this->Requests++;
 	}
-
-	bool operator==(Song& y) {
-		return this->Author == y.Author;
+	void DenyRequest() {
+		this->FailedRequests++;
 	}
 };
+
+//public ref class Song {
+//public:
+//	String^ Author;
+//	String^ Album;
+//	String^ Name;
+//	String^ Genre;
+//	String^ Singers;
+//	int Year;
+//	int Duration;
+//	int Rating;
+//	int Plays;
+//	Song(String^g, String^ c, String^ a,String^ s,String^ b, int y, int d) {
+//	Author = a;
+//	Album = b;// Если альбома нет - None 
+//	Singers = s;
+//	Name = c;
+//	Year = y;
+//Genre = g;
+//	Duration = d;
+//	Rating = 0;
+//	Plays = 0;	};
+//};

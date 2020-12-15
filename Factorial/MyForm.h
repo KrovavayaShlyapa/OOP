@@ -12,6 +12,36 @@ namespace Factorial {
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
+public ref class Song {
+public:
+	String^ Author;
+	String^ Album;
+	String^ Name;
+	String^ Genre;
+	String^ Singers;
+	int Year;
+	int Duration;
+	int Rating;
+	int Plays;
+	Song(String^ g, String^ c, String^ a, String^ s, String^ b, int y, int d) {
+		Author = a;
+		Album = b;// Если альбома нет - None 
+		Singers = s;
+		Name = c;
+		Year = y;
+		Genre = g;
+		Duration = d;
+		Rating = d;
+		Plays = 0;
+	};
+	void PlaySong(Song^ a) {
+		a->Rating += 0.05;
+	};
+	void Reset() {
+		this->Rating = 0;
+	}
+
+};
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -87,8 +117,14 @@ namespace Factorial {
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label1;
 	private: System::ComponentModel::IContainer^ components;
 	private:
+	private: System::Collections::Generic::LinkedList<Song^> lst;
+	private: System::Collections::Generic::LinkedListNode <Song^>^ node;
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -101,6 +137,7 @@ namespace Factorial {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+
 			this->components = (gcnew System::ComponentModel::Container());
 			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -146,6 +183,10 @@ namespace Factorial {
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->errorProvider1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Requests))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HitParade))->BeginInit();
@@ -460,7 +501,7 @@ namespace Factorial {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(731, 229);
+			this->textBox1->Location = System::Drawing::Point(728, 151);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(100, 20);
 			this->textBox1->TabIndex = 16;
@@ -472,23 +513,64 @@ namespace Factorial {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(731, 281);
+			this->textBox2->Location = System::Drawing::Point(728, 203);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(100, 20);
 			this->textBox2->TabIndex = 18;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(731, 255);
+			this->textBox3->Location = System::Drawing::Point(728, 177);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(100, 20);
 			this->textBox3->TabIndex = 19;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(699, 154);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(14, 13);
+			this->label1->TabIndex = 20;
+			this->label1->Text = L"K";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(699, 180);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(16, 13);
+			this->label2->TabIndex = 21;
+			this->label2->Text = L"M";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(700, 206);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(15, 13);
+			this->label3->TabIndex = 22;
+			this->label3->Text = L"N";
+			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(728, 298);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(75, 50);
+			this->button6->TabIndex = 23;
+			this->button6->Text = L"Random Request";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(867, 565);
+			this->Controls->Add(this->button6);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
@@ -517,28 +599,37 @@ namespace Factorial {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Catalog))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-			//Инициализация таблицы начальными значениями из файла
-			//Инициализация таблицы начальными значениями из файла
-			System::IO::StreamReader^ inFile = gcnew System::IO::StreamReader("input.txt");
-			String^ line;
-			int rowIndex = 0;
-			while ((line = inFile->ReadLine()) != nullptr)
-			{
-				cli::array<String^>^ temp = line->Split(' ');
-				this->Catalog->Rows->Add();
-				for (int i = 0; i < temp->Length; ++i)
-				{
-					this->Catalog->Rows[rowIndex]->Cells[i]->Value = temp[i];
-				}
-				++rowIndex;
-			}
+					  System::IO::StreamReader^ inFile = gcnew System::IO::StreamReader("input.txt");
+					  String^ line;
+					  int rowIndex = 0;
+					  while ((line = inFile->ReadLine()) != nullptr)
+					  {
+						  cli::array<String^>^ temp = line->Split(' ');
+						  this->Catalog->Rows->Add();
+						  for (int i = 0; i < temp->Length; ++i)
+						  {
+							  this->Catalog->Rows[rowIndex]->Cells[i]->Value = temp[i];
+						  }
+						  ++rowIndex;
+						  int z;
+						  int d;
+						  bool res;
+						  bool res2;
+						  res = Int32::TryParse(temp[5], z);
+						  res2 = Int32::TryParse(temp[6], d);
+						  Song^ a = gcnew Song(temp[0], temp[1], temp[2], temp[3], temp[4], z, d);
+						  lst.AddLast(a);
+
+					  }
 		}
+
 #pragma endregion
+	
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	 
+
 	private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {
 		for (int i = 0; i < Catalog->RowCount; i++)
 		{
@@ -553,11 +644,11 @@ namespace Factorial {
 
 		}
 	}
-private: System::Void Catalog_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->HitParade->RowCount = 0;
+	private: System::Void Catalog_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->HitParade->RowCount = 0;
 		int cnt = 0;
 		for (int i = 0; i < Catalog->RowCount; i++)
 		{
@@ -574,101 +665,109 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			}
 
 		}
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->HitParade->RowCount = 0;
-	int cnt = 0;
-	for (int i = 0; i < Catalog->RowCount; i++)
-	{
-		System::String^ tempstr = Catalog[7, i]->Value->ToString();
-		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
-		double rate;
-		bool x = Double::TryParse(tempstr, rate);
-		if (rate >= 0.7 && tempstr2 == "Hip-Hop") {
-			this->HitParade->Rows->Add();
-			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
-				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
-			}
-			cnt++;
-		}
-
 	}
-}
-private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->HitParade->RowCount = 0;
-	int cnt = 0;
-	for (int i = 0; i < Catalog->RowCount; i++)
-	{
-		System::String^ tempstr = Catalog[7, i]->Value->ToString();
-		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
-		double rate;
-		bool x = Double::TryParse(tempstr, rate);
-		if (rate >= 0.7 && tempstr2 == "Classic") {
-			this->HitParade->Rows->Add();
-			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
-				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->HitParade->RowCount = 0;
+		int cnt = 0;
+		for (int i = 0; i < Catalog->RowCount; i++)
+		{
+			System::String^ tempstr = Catalog[7, i]->Value->ToString();
+			System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+			double rate;
+			bool x = Double::TryParse(tempstr, rate);
+			if (rate >= 0.7 && tempstr2 == "Hip-Hop") {
+				this->HitParade->Rows->Add();
+				for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+					this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+				}
+				cnt++;
 			}
-			cnt++;
-		}
 
+		}
 	}
-}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->HitParade->RowCount = 0;
-	int cnt = 0;
-	for (int i = 0; i < Catalog->RowCount; i++)
-	{
-		System::String^ tempstr = Catalog[7, i]->Value->ToString();
-		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
-		double rate;
-		bool x = Double::TryParse(tempstr, rate);
-		if (rate >= 0.7 && tempstr2 == "Metal") {
-			this->HitParade->Rows->Add();
-			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
-				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->HitParade->RowCount = 0;
+		int cnt = 0;
+		for (int i = 0; i < Catalog->RowCount; i++)
+		{
+			System::String^ tempstr = Catalog[7, i]->Value->ToString();
+			System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+			double rate;
+			bool x = Double::TryParse(tempstr, rate);
+			if (rate >= 0.7 && tempstr2 == "Classic") {
+				this->HitParade->Rows->Add();
+				for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+					this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+				}
+				cnt++;
 			}
-			cnt++;
-		}
 
+		}
 	}
-}
-private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->HitParade->RowCount = 0;
-	int cnt = 0;
-	for (int i = 0; i < Catalog->RowCount; i++)
-	{
-		System::String^ tempstr = Catalog[7, i]->Value->ToString();
-		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
-		double rate;
-		bool x = Double::TryParse(tempstr, rate);
-		if (rate >= 0.7 && tempstr2 == "Bass") {
-			this->HitParade->Rows->Add();
-			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
-				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->HitParade->RowCount = 0;
+		int cnt = 0;
+		for (int i = 0; i < Catalog->RowCount; i++)
+		{
+			System::String^ tempstr = Catalog[7, i]->Value->ToString();
+			System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+			double rate;
+			bool x = Double::TryParse(tempstr, rate);
+			if (rate >= 0.7 && tempstr2 == "Metal") {
+				this->HitParade->Rows->Add();
+				for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+					this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+				}
+				cnt++;
 			}
-			cnt++;
-		}
 
+		}
 	}
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->HitParade->RowCount = 0;
-	int cnt = 0;
-	for (int i = 0; i < Catalog->RowCount; i++)
-	{
-		System::String^ tempstr = Catalog[7, i]->Value->ToString();
-		System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
-		double rate;
-		bool x = Double::TryParse(tempstr, rate);
-		if (rate >= 0.7 && tempstr2 == "Rap") {
-			this->HitParade->Rows->Add();
-			for (int j = 0; j < this->Catalog->ColumnCount; j++) {
-				this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->HitParade->RowCount = 0;
+		int cnt = 0;
+		for (int i = 0; i < Catalog->RowCount; i++)
+		{
+			System::String^ tempstr = Catalog[7, i]->Value->ToString();
+			System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+			double rate;
+			bool x = Double::TryParse(tempstr, rate);
+			if (rate >= 0.7 && tempstr2 == "Bass") {
+				this->HitParade->Rows->Add();
+				for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+					this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+				}
+				cnt++;
 			}
-			cnt++;
-		}
 
+		}
 	}
-}
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->HitParade->RowCount = 0;
+		int cnt = 0;
+		for (int i = 0; i < Catalog->RowCount; i++)
+		{
+			System::String^ tempstr = Catalog[7, i]->Value->ToString();
+			System::String^ tempstr2 = Catalog[0, i]->Value->ToString();
+			double rate;
+			bool x = Double::TryParse(tempstr, rate);
+			if (rate >= 0.7 && tempstr2 == "Rap") {
+				this->HitParade->Rows->Add();
+				for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+					this->HitParade[j, cnt]->Value = this->Catalog[j, i]->Value;
+				}
+				cnt++;
+			}
+
+		}
+	}
+	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+		int index = rand() % this->Catalog->RowCount;
+		this->Requests->Rows->Add();
+		for (int j = 0; j < this->Catalog->ColumnCount; j++) {
+			this->Requests[j, this->Requests->RowCount - 1]->Value = this->Catalog[j, index - 1]->Value;
+		}
+	}
+
 };
 }
