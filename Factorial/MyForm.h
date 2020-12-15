@@ -43,6 +43,7 @@ namespace Factorial {
 //	}
 //
 //};
+
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -284,6 +285,7 @@ namespace Factorial {
 			this->ButtonStep->TabIndex = 10;
 			this->ButtonStep->Text = L"Шаг моделирования";
 			this->ButtonStep->UseVisualStyleBackColor = true;
+			this->ButtonStep->Click += gcnew System::EventHandler(this, &MyForm::ButtonStep_Click);
 			// 
 			// ButtonStatistics
 			// 
@@ -625,7 +627,6 @@ namespace Factorial {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Catalog))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 
 #pragma endregion
@@ -635,6 +636,7 @@ namespace Factorial {
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 
+	int N = 0, M = 0, K = 0, Lambda = 0;
 	private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {
 		for (int i = 0; i < Catalog->RowCount; i++)
 		{
@@ -647,6 +649,35 @@ namespace Factorial {
 				i--;
 			}
 
+		}
+		bool z = Int32::TryParse(this->Days->Text, N);
+		if (z)
+		{
+			z = Int32::TryParse(this->HoursforProg->Text, M);
+			if (z)
+			{
+				z = Int32::TryParse(this->NumberofProgs->Text, K);
+				if (z)
+				{
+					z = Int32::TryParse(this->Intensive->Text, Lambda);
+					if (!z)
+					{
+						Lambda = 0;
+					}
+				}
+				else
+				{
+					K = 0;
+				}
+			}
+			else
+			{
+				M = 0;
+			}
+		}
+		else
+		{
+			N = 0;
 		}
 	}
 	private: System::Void Catalog_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
@@ -774,5 +805,16 @@ namespace Factorial {
 		}
 	}
 
+private: System::Void ButtonStep_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (N * 1440 > 0)
+	{
+
+	}
+	else
+	{
+		MessageBox::Show("????????????? ????????.");
+		// ??? ??????? ?? ????? ????? ?? ???????????.
+	}
+}
 };
 }
