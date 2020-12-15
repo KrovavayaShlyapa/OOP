@@ -12,36 +12,37 @@ namespace Factorial {
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
-public ref class Song {
-public:
-	String^ Author;
-	String^ Album;
-	String^ Name;
-	String^ Genre;
-	String^ Singers;
-	int Year;
-	int Duration;
-	int Rating;
-	int Plays;
-	Song(String^ g, String^ c, String^ a, String^ s, String^ b, int y, int d) {
-		Author = a;
-		Album = b;// Если альбома нет - None 
-		Singers = s;
-		Name = c;
-		Year = y;
-		Genre = g;
-		Duration = d;
-		Rating = d;
-		Plays = 0;
-	};
-	void PlaySong(Song^ a) {
-		a->Rating += 0.05;
-	};
-	void Reset() {
-		this->Rating = 0;
-	}
-
-};
+//public ref class Song {
+//public:
+//	String^ Author;
+//	String^ Album;
+//	String^ Name;
+//	String^ Genre;
+//	String^ Singers;
+//	int Year;
+//	int Duration;
+//	double Rating;
+//	int Plays;
+//	Song(String^ g, String^ c, String^ a, String^ s, String^ b, int y, int d) {
+//		Author = a;
+//		Album = b;// Если альбома нет - None 
+//		Singers = s;
+//		Name = c;
+//		Year = y;
+//		Genre = g;
+//		Duration = d;
+//		Rating = d;
+//		Plays = 0;
+//	};
+//	void PlaySong() {
+//		this->Rating += 0.05;
+	// this->Plays++;
+//	};
+//	void Reset() {
+//		this->Rating = 0;
+//	}
+//
+//};
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -113,18 +114,24 @@ public:
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn22;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn23;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn24;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ HoursforProg;
+
+	private: System::Windows::Forms::TextBox^ Days;
+	private: System::Windows::Forms::TextBox^ NumberofProgs;
+
+
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::TextBox^ Intensive;
+
 	private: System::ComponentModel::IContainer^ components;
 	private:
-	private: System::Collections::Generic::LinkedList<Song^> lst;
-	private: System::Collections::Generic::LinkedListNode <Song^>^ node;
+	/*private: System::Collections::Generic::LinkedList<Song^> lst;
+	private: System::Collections::Generic::LinkedListNode <Song^>^ node;*/
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
@@ -137,7 +144,6 @@ public:
 		/// </summary>
 		void InitializeComponent(void)
 		{
-
 			this->components = (gcnew System::ComponentModel::Container());
 			this->errorProvider1 = (gcnew System::Windows::Forms::ErrorProvider(this->components));
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -179,14 +185,16 @@ public:
 			this->dataGridViewTextBoxColumn22 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn23 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn24 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->NumberofProgs = (gcnew System::Windows::Forms::TextBox());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->Days = (gcnew System::Windows::Forms::TextBox());
+			this->HoursforProg = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->Intensive = (gcnew System::Windows::Forms::TextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->errorProvider1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Requests))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HitParade))->BeginInit();
@@ -499,31 +507,31 @@ public:
 			this->dataGridViewTextBoxColumn24->Name = L"dataGridViewTextBoxColumn24";
 			this->dataGridViewTextBoxColumn24->ReadOnly = true;
 			// 
-			// textBox1
+			// NumberofProgs
 			// 
-			this->textBox1->Location = System::Drawing::Point(728, 151);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 20);
-			this->textBox1->TabIndex = 16;
+			this->NumberofProgs->Location = System::Drawing::Point(728, 151);
+			this->NumberofProgs->Name = L"NumberofProgs";
+			this->NumberofProgs->Size = System::Drawing::Size(100, 20);
+			this->NumberofProgs->TabIndex = 16;
 			// 
 			// contextMenuStrip1
 			// 
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
 			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
-			// textBox2
+			// Days
 			// 
-			this->textBox2->Location = System::Drawing::Point(728, 203);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 20);
-			this->textBox2->TabIndex = 18;
+			this->Days->Location = System::Drawing::Point(728, 203);
+			this->Days->Name = L"Days";
+			this->Days->Size = System::Drawing::Size(100, 20);
+			this->Days->TabIndex = 18;
 			// 
-			// textBox3
+			// HoursforProg
 			// 
-			this->textBox3->Location = System::Drawing::Point(728, 177);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(100, 20);
-			this->textBox3->TabIndex = 19;
+			this->HoursforProg->Location = System::Drawing::Point(728, 177);
+			this->HoursforProg->Name = L"HoursforProg";
+			this->HoursforProg->Size = System::Drawing::Size(100, 20);
+			this->HoursforProg->TabIndex = 19;
 			// 
 			// label1
 			// 
@@ -554,26 +562,44 @@ public:
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(728, 298);
+			this->button6->Location = System::Drawing::Point(702, 299);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(75, 50);
+			this->button6->Size = System::Drawing::Size(102, 71);
 			this->button6->TabIndex = 23;
 			this->button6->Text = L"Random Request";
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
+			// 
+			// Intensive
+			// 
+			this->Intensive->Location = System::Drawing::Point(728, 229);
+			this->Intensive->Name = L"Intensive";
+			this->Intensive->Size = System::Drawing::Size(100, 20);
+			this->Intensive->TabIndex = 24;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(699, 232);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(13, 13);
+			this->label4->TabIndex = 25;
+			this->label4->Text = L"L";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(867, 565);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->Intensive);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->HoursforProg);
+			this->Controls->Add(this->Days);
+			this->Controls->Add(this->NumberofProgs);
 			this->Controls->Add(this->Catalog);
 			this->Controls->Add(this->HitParadeLabel);
 			this->Controls->Add(this->RequestsLabel);
@@ -599,28 +625,7 @@ public:
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Catalog))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-					  System::IO::StreamReader^ inFile = gcnew System::IO::StreamReader("input.txt");
-					  String^ line;
-					  int rowIndex = 0;
-					  while ((line = inFile->ReadLine()) != nullptr)
-					  {
-						  cli::array<String^>^ temp = line->Split(' ');
-						  this->Catalog->Rows->Add();
-						  for (int i = 0; i < temp->Length; ++i)
-						  {
-							  this->Catalog->Rows[rowIndex]->Cells[i]->Value = temp[i];
-						  }
-						  ++rowIndex;
-						  int z;
-						  int d;
-						  bool res;
-						  bool res2;
-						  res = Int32::TryParse(temp[5], z);
-						  res2 = Int32::TryParse(temp[6], d);
-						  Song^ a = gcnew Song(temp[0], temp[1], temp[2], temp[3], temp[4], z, d);
-						  lst.AddLast(a);
 
-					  }
 		}
 
 #pragma endregion
